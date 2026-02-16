@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+.venv/
+
+# Environment files (contain secrets!)
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite3
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+.next/
+out/
+.vercel
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local storage (uploaded files - too large for git)
+backend/storage/pdfs/
+backend/storage/covers/
+backend/storage/*.pdf
+*.pdf
+
+# Keep storage folder structure
+!backend/storage/
+!backend/storage/.gitkeep
+
+# Build
+dist/
+build/
+
+# Test
+.coverage
+htmlcov/
+.pytest_cache/

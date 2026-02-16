@@ -1,0 +1,88 @@
+{
+  "stories": [
+    {
+      "id": 1,
+      "title": "Leo's Brave Little Roar",
+      "author": "StoryLand",
+      "description": "A wonderful adventure story for children ages 3-5.",
+      "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263669/kids-library/covers/1_leo_cover.png",
+      "pdf_url": "storage/pdfs\\Leo's Brave Little Roar.pdf",
+      "page_count": 10,
+      "age_group": "3-5",
+      "theme": "adventure",
+      "is_premium": false,
+      "is_featured": true,
+      "read_count": 0
+    },
+    {
+      "id": 2,
+      "title": "The Magic Pencil",
+      "author": "StoryLand",
+      "description": "A wonderful fantasy story for children ages 6-8.",
+      "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263726/kids-library/covers/2_magic_pencil_cover.png",
+      "pdf_url": "storage/pdfs\\The Magic Pencil.pdf",
+      "page_count": 10,
+      "age_group": "6-8",
+      "theme": "fantasy",
+      "is_premium": false,
+      "is_featured": true,
+      "read_count": 30
+    },
+    {
+      "id": 3,
+      "title": "Oliver the Owl Learns to Listen",
+      "author": "StoryLand",
+      "description": "A wonderful animals story for children ages 6-8.",
+      "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263744/kids-library/covers/3_oliver_owl_cover.png",
+      "pdf_url": "storage\\pdfs\\Oliver the Owl Learns to Listen.pdf",
+      "page_count": 10,
+      "age_group": "6-8",
+      "theme": "animals",
+      "is_premium": false,
+      "is_featured": true,
+      "read_count": 0
+    },
+    {
+      "id": 4,
+      "title": "Shelly the Sea Turtle",
+      "author": "StoryLand",
+      "description": "A wonderful adventure story for children ages 6-8.",
+      "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263766/kids-library/covers/4_shelly_turtle_cover.png",
+      "pdf_url": "storage\\pdfs\\Shelly the Sea Turtle.pdf",
+      "page_count": 10,
+      "age_group": "6-8",
+      "theme": "adventure",
+      "is_premium": false,
+      "is_featured": true,
+      "read_count": 0
+    },
+    {
+      "id": 5,
+      "title": "The Boy Who Flew Too High",
+      "author": "StoryLand",
+      "description": "A wonderful adventure story for children ages 6-8.",
+      "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263797/kids-library/covers/5_boy_flew_cover.png",
+      "pdf_url": "storage\\pdfs\\The Boy Who Flew Too High.pdf",
+      "page_count": 10,
+      "age_group": "6-8",
+      "theme": "adventure",
+      "is_premium": false,
+      "is_featured": true,
+      "read_count": 0
+    },
+    {
+      "id": 6,
+      "title": "The Gentle Giant and the Little Star",
+      "author": "StoryLand",
+      "description": "A wonderful space story for children ages 3-5.",
+      "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263824/kids-library/covers/6_gentle_giant_cover.png",
+      "pdf_url": "storage\\pdfs\\The Gentle Giant and the Little Star.pdf",
+      "page_count": 10,
+      "age_group": "3-5",
+      "theme": "space",
+      "is_premium": false,
+      "is_featured": true,
+      "read_count": 0
+    }
+  ]
+}
