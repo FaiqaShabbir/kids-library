@@ -49,7 +49,7 @@ const themeGradients: Record<string, string> = {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 // Generate a themed cover image URL
-const getCoverImageUrl = (story: Story): string | null => {
+const getCoverImageUrl = (story: Story): string => {
   // If story has a custom cover, use the backend endpoint
   if (story.cover_image_url) {
     return `${API_URL}/stories/${story.id}/cover`;
