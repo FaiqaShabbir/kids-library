@@ -8,12 +8,11 @@ A magical platform for AI-generated children's stories with a beautiful, kid-fri
 
 - 🎨 **Beautiful UI** - Whimsical, kid-friendly design with animations
 - 📖 **Story Library** - Browse stories by theme and age group
-- 🤖 **AI Story Generation** - Create custom stories with Gemini AI (Premium)
+- 🤖 **AI Cover Generation** - Beautiful DALL-E generated cover images
 - 📥 **PDF Downloads** - Download stories for offline reading
-- 💳 **Subscription System** - Free and Premium tiers with Stripe integration
+- 📱 **In-Browser Reading** - Read stories directly on the website
 - ⭐ **Ratings & Reviews** - Community feedback on stories
 - ❤️ **Favorites** - Save favorite stories for easy access
-- 🔐 **User Authentication** - Secure login with JWT
 
 ## 🛠️ Tech Stack
 
@@ -21,9 +20,9 @@ A magical platform for AI-generated children's stories with a beautiful, kid-fri
 - **Python 3.11+** with FastAPI
 - **SQLAlchemy** for ORM
 - **SQLite** (development) / PostgreSQL (production)
-- **Google Gemini AI** for story generation
+- **OpenAI DALL-E** for cover image generation
+- **Cloudinary** for image/PDF storage
 - **FPDF2** for PDF creation
-- **Stripe** for payments
 
 ### Frontend
 - **Next.js 14** with TypeScript
@@ -62,8 +61,8 @@ copy .env.example .env  # Windows
 # cp .env.example .env  # Mac/Linux
 
 # Edit .env and add your API keys:
-# - GEMINI_API_KEY (from Google AI Studio)
-# - STRIPE_SECRET_KEY (from Stripe Dashboard)
+# - OPENAI_API_KEY (for DALL-E cover generation)
+# - CLOUDINARY credentials (for cloud storage)
 
 # Seed the database with sample stories
 python seed_data.py
@@ -147,23 +146,6 @@ Email: demo@storyland.com
 Password: demo123
 ```
 
-This account has Premium access for testing all features.
-
-## 💰 Monetization Strategy
-
-1. **Freemium Model**
-   - Free: 5 stories/month, basic features
-   - Premium: Unlimited access, downloads, AI generation
-
-2. **Subscription Pricing**
-   - Monthly: $9.99/month
-   - Yearly: $79.99/year (save 33%)
-
-3. **Additional Revenue**
-   - AdSense on free tier (when traffic grows)
-   - Newsletter sponsorships
-   - School/Library bulk licenses
-
 ## 🎨 Customization
 
 ### Adding New Themes
@@ -198,15 +180,11 @@ Edit `backend/app/services/ai_story_generator.py` to customize story generation 
 - `GET /stories/` - List stories (paginated)
 - `GET /stories/featured` - Get featured stories
 - `GET /stories/{id}` - Get story details
+- `GET /stories/{id}/view` - View PDF in browser
 - `GET /stories/{id}/download` - Download PDF
-- `POST /stories/generate` - Generate story (Premium)
+- `GET /stories/{id}/cover` - Get cover image
 - `POST /stories/{id}/favorite` - Toggle favorite
 - `POST /stories/{id}/rate` - Rate story
-
-### Subscriptions
-- `POST /subscriptions/create-checkout-session` - Start checkout
-- `GET /subscriptions/status` - Get subscription status
-- `POST /subscriptions/cancel` - Cancel subscription
 
 ## 🤝 Contributing
 
