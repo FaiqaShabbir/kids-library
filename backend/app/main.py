@@ -68,6 +68,54 @@ def health_check():
     return {"status": "healthy", "message": "API is running smoothly!"}
 
 
+@app.post("/update-pdfs")
+def update_pdf_urls(pdf_links: dict):
+    """
+    Update story PDF URLs by matching filenames.
+    
+    Send POST with JSON body like:
+    {
+        "pdfs": [
+            {"filename": "Leo's Brave Little Roar.pdf", "url": "https://drive.google.com/..."},
+            {"filename": "The Magic Pencil.pdf", "url": "https://drive.google.com/..."}
+        ]
+    }
+    """
+    from app.database import SessionLocal
+    from app.models import Story
+    
+    db = SessionLocal()
+    updated = []
+    not_found = []
+    
+    for pdf in pdf_links.get("pdfs", []):
+        filename = pdf.get("filename", "")
+        url = pdf.get("url", "")
+        
+        # Clean filename - remove .pdf extension and normalize
+        clean_name = filename.replace(".pdf", "").replace(".PDF", "").strip()
+        
+        # Try to find matching story
+        story = db.query(Story).filter(
+            Story.title.ilike(f"%{clean_name}%")
+        ).first()
+        
+        if story:
+            story.pdf_url = url
+            updated.append({"title": story.title, "url": url})
+        else:
+            not_found.append(filename)
+    
+    db.commit()
+    db.close()
+    
+    return {
+        "message": f"Updated {len(updated)} stories",
+        "updated": updated,
+        "not_found": not_found
+    }
+
+
 @app.get("/seed")
 def seed_database():
     """Seed the database with initial stories (call once)"""
