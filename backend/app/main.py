@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
-from app.routes import stories, users, subscriptions
+from app.routes import stories, users
 from app.database import engine, Base
 from app.config import get_settings
 
@@ -52,7 +52,6 @@ if settings.environment == "development" and os.path.exists("storage"):
 # Include routers
 app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(stories.router, prefix="/stories", tags=["Stories"])
-app.include_router(subscriptions.router, prefix="/subscriptions", tags=["Subscriptions"])
 
 
 @app.get("/")
