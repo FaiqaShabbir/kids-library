@@ -66,3 +66,102 @@ def root():
 @app.get("/health")
 def health_check():
     return {"status": "healthy", "message": "API is running smoothly!"}
+
+
+@app.get("/seed")
+def seed_database():
+    """Seed the database with initial stories (call once)"""
+    from app.database import SessionLocal
+    from app.models import Story
+    
+    db = SessionLocal()
+    
+    # Check if already seeded
+    if db.query(Story).count() > 0:
+        db.close()
+        return {"message": "Database already seeded", "count": db.query(Story).count()}
+    
+    # Stories with Cloudinary cover URLs
+    stories_data = [
+        {
+            "title": "Leo's Brave Little Roar",
+            "author": "StoryLand",
+            "description": "A wonderful adventure story about a brave little lion cub who finds his courage.",
+            "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263669/kids-library/covers/1_leo_cover.png",
+            "pdf_url": None,
+            "page_count": 10,
+            "age_group": "3-5",
+            "theme": "adventure",
+            "is_premium": False,
+            "is_featured": True,
+        },
+        {
+            "title": "The Magic Pencil",
+            "author": "StoryLand", 
+            "description": "A magical tale about a pencil that brings drawings to life.",
+            "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263726/kids-library/covers/2_magic_pencil_cover.png",
+            "pdf_url": None,
+            "page_count": 10,
+            "age_group": "6-8",
+            "theme": "fantasy",
+            "is_premium": False,
+            "is_featured": True,
+        },
+        {
+            "title": "Oliver the Owl Learns to Listen",
+            "author": "StoryLand",
+            "description": "Oliver the owl discovers the importance of listening to others.",
+            "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263744/kids-library/covers/3_oliver_owl_cover.png",
+            "pdf_url": None,
+            "page_count": 10,
+            "age_group": "6-8",
+            "theme": "animals",
+            "is_premium": False,
+            "is_featured": True,
+        },
+        {
+            "title": "Shelly the Sea Turtle",
+            "author": "StoryLand",
+            "description": "Follow Shelly on her ocean adventure to find her way home.",
+            "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263766/kids-library/covers/4_shelly_turtle_cover.png",
+            "pdf_url": None,
+            "page_count": 10,
+            "age_group": "6-8",
+            "theme": "adventure",
+            "is_premium": False,
+            "is_featured": True,
+        },
+        {
+            "title": "The Boy Who Flew Too High",
+            "author": "StoryLand",
+            "description": "An exciting adventure about dreams, courage, and knowing your limits.",
+            "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263797/kids-library/covers/5_boy_flew_cover.png",
+            "pdf_url": None,
+            "page_count": 10,
+            "age_group": "6-8",
+            "theme": "adventure",
+            "is_premium": False,
+            "is_featured": True,
+        },
+        {
+            "title": "The Gentle Giant and the Little Star",
+            "author": "StoryLand",
+            "description": "A heartwarming space story about friendship between a giant and a tiny star.",
+            "cover_image_url": "https://res.cloudinary.com/dnb0vlwww/image/upload/v1771263824/kids-library/covers/6_gentle_giant_cover.png",
+            "pdf_url": None,
+            "page_count": 10,
+            "age_group": "3-5",
+            "theme": "space",
+            "is_premium": False,
+            "is_featured": True,
+        },
+    ]
+    
+    for data in stories_data:
+        story = Story(**data)
+        db.add(story)
+    
+    db.commit()
+    db.close()
+    
+    return {"message": "Database seeded successfully!", "count": len(stories_data)}
